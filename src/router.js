@@ -1,6 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
+import Pie from './views/Pie.vue'
+import Area from './views/Area.vue'
+import Guide from './views/Guide.vue'
+import Facet from './views/Facet.vue'
 
 Vue.use(Router)
 
@@ -12,6 +16,26 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home
+    },
+    {
+      path: '/pie',
+      name: 'pie',
+      component: Pie
+    },
+    {
+      path: '/area',
+      name: 'area',
+      component: Area
+    },
+    {
+      path: '/guide',
+      name: 'guide',
+      component: Guide
+    },
+    {
+      path: '/facet',
+      name: 'facet',
+      component: Facet
     },
     {
       path: '/about',
