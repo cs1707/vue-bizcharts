@@ -87,7 +87,8 @@ export default {
         return
       }
       this.g2Instance.clear()
-      const { start, end, data, animate, scale, filter } = this.$props
+      // const { start, end, data, animate, scale, filter } = this.$props
+      const { data, scale, filter } = this.$props
       // 🤔️ 这里是不是有坑 start end
       const view = this.g2Instance
       if (data) {
@@ -114,11 +115,11 @@ export default {
     },
     removeElement () {
       const g2Instance = this.chart.g2Instance
+      this.g2Instance = null
       if (!g2Instance) {
         return
       }
       g2Instance.removeView(this.g2Instance)
-      this.g2Instance = null
       this.chart.needRepaint = true
     }
   }

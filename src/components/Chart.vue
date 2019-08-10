@@ -7,6 +7,8 @@
 
 <script>
 import G2 from '@antv/g2'
+import ResizeObserver from 'resize-observer-polyfill'
+import debounce from 'lodash/debounce'
 
 export default {
   name: 'BizChart',
@@ -74,15 +76,45 @@ export default {
     padding: 'shouldRebuild',
     background: 'shouldRebuild',
     plotBackground: 'shouldRebuild',
-    pixelRatio: 'shouldRebuild'
+    pixelRatio: 'shouldRebuild',
+    data (data) {
+      this.g2Instance.changeData(data)
+    },
+    scale (scale) {
+      if (Array.isArray(scale)) {
+        this.g2Instance.scale(...scale)
+      } else {
+        this.g2Instance.scale(scale)
+      }
+    },
+    animate (animate) {
+      this.g2Instance.animate(animate)
+    },
+    width (width) {
+      this.g2Instance.changeWidth(width)
+    },
+    height (height) {
+      console.log(height)
+      this.g2Instance.changeHeight(height)
+    }
   },
   mounted () {
     this.createChart()
     this.updateChart()
     this.g2Instance.render()
     this.resetState()
+    if (this.forceFit) {
+      this.resizeHander = debounce(() => {
+        if (!this.g2Instance) return
+        this.g2Instance.forceFit()
+      }, 300)
+      const ro = new ResizeObserver(this.resizeHander)
+      ro.observe(this.$el)
+      this.observe = ro
+    }
   },
   updated () {
+    console.log(this.needRepaint)
     if (this.needRebuild) {
       this.g2Instance.destroy()
       this.createChart()
@@ -101,12 +133,12 @@ export default {
     console.log('chart before destroy')
     this.g2Instance.destroy()
     this.g2Instance = null
-    // if (this.forceFit) {
-    //   this.forceFit.cancel()
-    // }
-    // if (this.observe) {
-    //   this.observe.unobserve(this.containerWrap)
-    // }
+    if (this.resizeHander) {
+      this.resizeHander.cancel()
+    }
+    if (this.observe) {
+      this.observe.unobserve(this.$el)
+    }
   },
   methods: {
     traverse (children, callback) {

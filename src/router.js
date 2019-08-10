@@ -1,10 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
-import Pie from './views/Pie.vue'
-import Area from './views/Area.vue'
-import Guide from './views/Guide.vue'
-import Facet from './views/Facet.vue'
 
 Vue.use(Router)
 
@@ -14,36 +9,59 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Home
+      component: () => import('./views/Home.vue')
     },
     {
-      path: '/pie',
-      name: 'pie',
-      component: Pie
+      path: '/demo/area',
+      component: () => import('./views/area/index.js')
     },
     {
-      path: '/area',
-      name: 'area',
-      component: Area
+      path: '/demo/bar',
+      component: () => import('./views/bar/index.js')
     },
     {
-      path: '/guide',
-      name: 'guide',
-      component: Guide
+      path: '/demo/facet',
+      component: () => import('./views/facet/index.js')
     },
     {
-      path: '/facet',
-      name: 'facet',
-      component: Facet
+      path: '/demo/funnel',
+      component: () => import('./views/funnel/index.js')
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+      path: '/demo/guide',
+      component: () => import('./views/guide/index.js')
+    },
+    {
+      path: '/demo/heatmap',
+      component: () => import('./views/heatmap/index.js')
+    },
+    {
+      path: '/demo/line',
+      component: () => import('./views/line/index.js')
+    },
+    {
+      path: '/demo/map',
+      component: () => import('./views/map/index.js')
+    },
+    {
+      path: '/demo/others',
+      component: () => import('./views/others/index.js')
+    },
+    {
+      path: '/demo/pie',
+      component: () => import('./views/pie/index.js')
+    },
+    {
+      path: '/demo/point',
+      component: () => import('./views/point/index.js')
+    },
+    {
+      path: '/demo/relation',
+      component: () => import('./views/relation/index.js')
+    },
+    {
+      path: '/demo/theme',
+      component: () => import('./views/theme/index.js')
     }
   ]
 })
