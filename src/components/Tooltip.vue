@@ -42,7 +42,7 @@ export default {
       type: Boolean,
       default: false
     },
-    crosshairs: Object,
+    crosshairs: [Object, Boolean],
     hideMarkers: {
       type: Boolean
     },

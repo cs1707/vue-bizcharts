@@ -1,6 +1,5 @@
 import Vue from 'vue'
-
-export default {
+const Guide = {
   name: 'BizGuide',
   inject: {
     chart: {},
@@ -120,12 +119,17 @@ const Base = {
 
 const [Line, Text, Image, Region, Html, Arc, RegionFilter, DataMarker, DataRegion] =
 ['Line', 'Text', 'Image', 'Region', 'Html', 'Arc', 'RegionFilter', 'DataMarker', 'DataRegion']
-  .map(type => Vue.extend({
-    ...Base,
-    name: 'BizGuide' + type,
-    type: type[0].toLowerCase() + type.slice(1)
-  }))
+  .map(type => {
+    const comp = Vue.extend({
+      ...Base,
+      name: 'BizGuide' + type,
+      type: type[0].toLowerCase() + type.slice(1)
+    })
+    Guide[type] = comp
+    return comp
+  })
 
+export default Guide
 export {
   Line, Text, Image, Region, Html, Arc, RegionFilter, DataMarker, DataRegion
 }

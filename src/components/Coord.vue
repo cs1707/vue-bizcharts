@@ -86,6 +86,9 @@ export default {
       if (!g2Instance) {
         return
       }
+      console.log(this.getParent())
+      console.log(this.getParent().g2Instance)
+      console.log('????')
       g2Instance.coord('rect', {})
       this.getParent().needRepaint = true
     },
