@@ -31,7 +31,7 @@ export default {
     title: String,
     shared: {
       type: Boolean,
-      default: true
+      default: undefined
     },
     follow: {
       type: Boolean,
@@ -66,7 +66,6 @@ export default {
     this.addElement()
   },
   beforeUpdate () {
-    console.log('legend before update')
   },
   watch: {
     $props: {
@@ -77,7 +76,6 @@ export default {
     }
   },
   beforeDestroy () {
-    console.log('tooltip before destroy')
     this.deleteElement()
   },
   methods: {
@@ -89,7 +87,26 @@ export default {
       if (!g2Instance) {
         return
       }
-      this.g2Instance = g2Instance.tooltip({ ...this.$props, ...this.$attrs })
+      console.log(
+        {
+       ...this.$props, 
+       ...this.$attrs, 
+      'g2-tooltip': this.$props.g2Tooltip,
+      'g2-tooltip-title': this.$props.g2TooltipTitle,
+      'g2-tooltip-list': this.$props.g2TooltipList,
+      'g2-tooltip-list-item': this.$props.g2TooltipListItem,
+      'g2-tooltip-marker': this.$props.g2TooltipMarker,
+     }
+      )
+      this.g2Instance = g2Instance.tooltip({
+       ...this.$props, 
+       ...this.$attrs, 
+      'g2-tooltip': this.$props.g2Tooltip,
+      'g2-tooltip-title': this.$props.g2TooltipTitle,
+      'g2-tooltip-list': this.$props.g2TooltipList,
+      'g2-tooltip-list-item': this.$props.g2TooltipListItem,
+      'g2-tooltip-marker': this.$props.g2TooltipMarker,
+     })
       this.chart.needRepaint = true
     },
     deleteElement () {

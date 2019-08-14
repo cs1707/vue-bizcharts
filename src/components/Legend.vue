@@ -11,6 +11,10 @@ export default {
       type: Boolean,
       default: true
     },
+    reversed: {
+      type: Boolean,
+      default: false
+    },
     position: {
       type: String,
       default: 'bottom-center'

@@ -114,13 +114,14 @@ export default {
     }
   },
   updated () {
-    console.log(this.needRepaint)
     if (this.needRebuild) {
+      console.log('chart rebuild')
       this.g2Instance.destroy()
       this.createChart()
       this.updateChart()
       this.g2Instance.render()
     } else if (this.needReExecute) {
+      console.log('chart needReexecute')
       this.g2Instance.clear()
       this.updateChart()
       this.g2Instance.repaint()
