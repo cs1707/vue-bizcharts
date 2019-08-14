@@ -40,7 +40,7 @@ export default {
                 action: obj.action,
                 percent: 'median' }}
               content={parseInt(obj.percent * 100) + '%'}
-              style={{
+              styles={{
                 fill: '#fff',
                 fontSize: '12',
                 textAlign: 'center',

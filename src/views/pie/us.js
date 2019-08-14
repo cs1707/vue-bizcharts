@@ -57,7 +57,7 @@ export default {
             }
           }
         ]}
-        style={{
+        styles={{
           lineWidth: 1,
           stroke: '#fff'
         }}

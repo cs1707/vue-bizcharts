@@ -3,7 +3,7 @@
     <ul>
       <li v-for="item in routes" :key="item">
         <router-link :to="`/demo/${item}`">
-          {{item}}
+          {{item[0].toUpperCase() + item.substring(1)}}
         </router-link>
       </li>
     </ul>
@@ -18,21 +18,21 @@ export default {
   data () {
     return {
       routes: [
-        'area',
-        'bar',
-        'facet',
-        'funnel',
-        'guage',
-        'guide',
-        'heatmap',
         'line',
-        'map',
-        'others',
-        'pie',
+        'bar',
+        'area',
         'point',
+        'pie',
+        'heatmap',
+        'funnel',
         'relation',
+        'facet',
+        'theme',
+        'guage',
+        'map',
         'slider',
-        'theme'
+        'guide',
+        'others'
       ]
     }
   }

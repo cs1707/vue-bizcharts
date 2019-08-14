@@ -1,4 +1,4 @@
-import { Axis, Chart, Coord, Geom, Guide, Shape } from 'bizcharts'
+import { Axis, Chart, Coord, Geom, Guide, Shape } from '@/components'
 
 const { Html, Arc } = Guide
 
@@ -50,7 +50,8 @@ export default {
   data () {
     return {
       data: 2.5,
-      lineWidth: 25
+      lineWidth: 25,
+      padding: [ 0, 0, 200, 0 ]
     }
   },
 
@@ -61,15 +62,16 @@ export default {
   },
 
   render () {
-    const { data, lineWidth } = this
+    const { data, lineWidth, padding } = this
     const val = data
 
+    const chartData = [{ value: data }]
     return (
       <div>
         <div style={{ textAlign: 'center' }}>
-          <input type="range" min="0" max="6" step="0.01" value={data} onChange={this.handleChange} />
+          <input type="range" min="0" max="6" step="0.01" value={data} onInput={this.handleChange} />
         </div>
-        <Chart height={window.innerHeight} data={[{ value: data }]} scale={cols} padding={[ 0, 0, 200, 0 ]} forceFit>
+        <Chart height={window.innerHeight} data={chartData} scale={cols} padding={padding} forceFit>
           <Coord type='polar' startAngle={-9 / 8 * Math.PI} endAngle={1 / 8 * Math.PI} radius={0.75} />
           <Axis name='value'
             zIndex={2}
@@ -91,32 +93,32 @@ export default {
           <Axis name='1' visible={false}/>
           <Guide>
             <Arc zIndex={0} start={[ 0, 0.965 ]} end={[ 6, 0.965 ]}
-              style={{ // 底灰色
+              styles={{ // 底灰色
                 stroke: 'rgba(0, 0, 0, 0.09)',
                 lineWidth
               }} />
             { val >= 2 && <Arc zIndex={1} start={[ 0, 0.965 ]} end={[ val, 0.965 ]}
-              style={{ // 底灰色
+              styles={{ // 底灰色
                 stroke: color[0],
                 lineWidth
               }} />}
             { val >= 4 && <Arc zIndex={1} start={[ 2, 0.965 ]} end={[ 4, 0.965 ]}
-              style={{ // 底灰色
+              styles={{ // 底灰色
                 stroke: color[1],
                 lineWidth
               }} />}
             { val >= 4 && val <= 6 && <Arc zIndex={1} start={[ 4, 0.965 ]} end={[ val, 0.965 ]}
-              style={{ // 底灰色
+              styles={{ // 底灰色
                 stroke: color[2],
                 lineWidth
               }} />}
             { val >= 2 && val < 4 && <Arc zIndex={1} start={[ 2, 0.965 ]} end={[ val, 0.965 ]}
-              style={{ // 底灰色
+              styles={{ // 底灰色
                 stroke: color[1],
                 lineWidth
               }} />}
             { val < 2 && <Arc zIndex={1} start={[ 0, 0.965 ]} end={[ val, 0.965 ]}
-              style={{ // 底灰色
+              styles={{ // 底灰色
                 stroke: color[0],
                 lineWidth
               }} />}
@@ -131,7 +133,7 @@ export default {
             shape='pointer'
             color='#1890FF'
             active={false}
-            style={{ stroke: '#fff', lineWidth: 1 }}
+            styles={{ stroke: '#fff', lineWidth: 1 }}
           />
         </Chart>
       </div>

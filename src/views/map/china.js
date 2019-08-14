@@ -45,7 +45,7 @@ export default {
     return (
       <Chart data={[1]} height={window.innerHeight} scale={cols} padding={[40, 90]} forceFit>
         <View data={dvGeo} >
-          <Geom type='polygon' position='x*y' style={{ stroke: '#ddd', lineWidth: 0.5 }}/>
+          <Geom type='polygon' position='x*y' styles={{ stroke: '#ddd', lineWidth: 0.5 }}/>
         </View>
         <View data={dvData} >
           <Geom type='point' position='x*y' size={20}>

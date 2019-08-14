@@ -93,7 +93,7 @@ export default {
       <Tooltip showTitle={false} />
       <Legend name='trend' position='left' />
       <View data={worldMap} >
-        <Geom type='polygon' tooltip={false} position='longitude*latitude' style={{ fill: '#fff', stroke: '#ccc', lineWidth: 1 }}/>
+        <Geom type='polygon' tooltip={false} position='longitude*latitude' styles={{ fill: '#fff', stroke: '#ccc', lineWidth: 1 }}/>
       </View>
       <View data={userDv} scale={{
         'trend': {
@@ -104,7 +104,7 @@ export default {
           <Label content='name' offset={0} textStyle={{ fill: '#545454', fontSize: 10 }}/>
         </Geom>
       </View>
-      <Geom type='polygon' position="x*y" style={{ lineWidth: 1, stroke: '#fff' }} color={['count', [ 'rgb(200, 200, 255)', 'rgb(0, 0, 255)' ]]} />
+      <Geom type='polygon' position="x*y" styles={{ lineWidth: 1, stroke: '#fff' }} color={['count', [ 'rgb(200, 200, 255)', 'rgb(0, 0, 255)' ]]} />
     </Chart>
   }
 }

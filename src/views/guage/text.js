@@ -1,4 +1,4 @@
-import { Chart, Geom, Axis, Coord, Guide, Shape } from 'bizcharts'
+import { Chart, Geom, Axis, Coord, Guide, Shape } from '@/components'
 const { Html, Arc, Line } = Guide
 
 Shape.registerShape('point', 'pointer', {
@@ -102,13 +102,13 @@ export default {
             }}
           />
           <Arc zIndex={0} start={[ 0, 0.965 ]} end={[ 9, 0.965 ]}
-            style={{ // 底灰色
+            styles={{ // 底灰色
               stroke: '#000',
               lineWidth: 18,
               opacity: 0.09
             }} />
           <Arc zIndex={1} start={[ 0, 0.965 ]} end={[ data[0].value, 0.965 ]}
-            style={{ // 底灰色
+            styles={{ // 底灰色
               stroke: '#1890FF',
               lineWidth: 18
             }}/>
@@ -116,7 +116,7 @@ export default {
         </Guide>
         <Geom type="point" position="value*1" shape='pointer' color='#1890FF'
           active={false}
-          style={{ stroke: '#fff', lineWidth: 1 }}
+          styles={{ stroke: '#fff', lineWidth: 1 }}
         />
       </Chart>
     )
