@@ -28,6 +28,10 @@ export default new Router({
       component: () => import('./views/funnel/index.js')
     },
     {
+      path: '/demo/guage',
+      component: () => import('./views/guage/index.js')
+    },
+    {
       path: '/demo/guide',
       component: () => import('./views/guide/index.js')
     },
