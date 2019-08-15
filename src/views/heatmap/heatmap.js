@@ -44,7 +44,7 @@ export default {
         }} />
         <Tooltip />
         <Geom type="polygon" position="name*day" color={['sales', '#BAE7FF-#1890FF-#0050B3']}
-          style={{ stroke: '#fff', lineWidth: 1 }}
+          styles={{ stroke: '#fff', lineWidth: 1 }}
         >
           <Label content="sales" offset={-2} textStyle={{
             fill: '#fff',

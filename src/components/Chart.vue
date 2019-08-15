@@ -94,33 +94,41 @@ export default {
       this.g2Instance.changeWidth(width)
     },
     height (height) {
-      console.log(height)
       this.g2Instance.changeHeight(height)
+    },
+    forceFit (forceFit) {
+      if (forceFit) {
+        this.observer.observe(this.$el)
+      } else {
+        this.observer.unobserve(this.$el)
+      }
     }
   },
   mounted () {
     this.createChart()
     this.updateChart()
+    this.bindEvents()
     this.g2Instance.render()
     this.resetState()
+    this.resizeHander = debounce(() => {
+      if (!this.g2Instance) return
+      this.g2Instance.forceFit()
+    }, 300)
+    this.observer = new ResizeObserver(this.resizeHander)
     if (this.forceFit) {
-      this.resizeHander = debounce(() => {
-        if (!this.g2Instance) return
-        this.g2Instance.forceFit()
-      }, 300)
-      const ro = new ResizeObserver(this.resizeHander)
-      ro.observe(this.$el)
-      this.observe = ro
+      this.observer.observe(this.$el)
     }
   },
   updated () {
-    console.log(this.needRepaint)
     if (this.needRebuild) {
+      console.log('chart rebuild')
       this.g2Instance.destroy()
       this.createChart()
       this.updateChart()
+      this.bindEvents()
       this.g2Instance.render()
     } else if (this.needReExecute) {
+      console.log('chart needReexecute')
       this.g2Instance.clear()
       this.updateChart()
       this.g2Instance.repaint()
@@ -136,8 +144,8 @@ export default {
     if (this.resizeHander) {
       this.resizeHander.cancel()
     }
-    if (this.observe) {
-      this.observe.unobserve(this.$el)
+    if (this.forceFit) {
+      this.observer.unobserve(this.$el)
     }
   },
   methods: {
@@ -148,6 +156,34 @@ export default {
           this.traverse(child.$children, callback)
         })
       }
+    },
+    bindEvents () {
+      const chart = this.g2Instance
+      const shapes = ['point', 'area', 'line', 'path', 'interval', 'schema', 'polygon', 'edge',
+        'axis-title', 'axis-label', 'axis-ticks', 'axis-line', 'axis-grid', 'legend-title',
+        'legend-item', 'legend-marker', 'legend-text', 'guide-text', 'guide-region',
+        'guide-line', 'guide-image', 'label'
+      ]
+      const events = [
+        'mouseenter',
+        'mousemove',
+        'mouseleave',
+        'click',
+        'dblclick',
+        'mousedown',
+        'mouseup',
+        'touchstart',
+        'touchmove',
+        'touchend'
+      ]
+      events.forEach(eventName => {
+        chart.on(eventName, (...args) => this.$emit(eventName, ...args))
+      })
+      events.forEach(eventName => {
+        shapes.forEach(shapeName => {
+          chart.on(`${shapeName}:${eventName}`, (...args) => this.$emit(`${shapeName}-${eventName}`, ...args))
+        })
+      })
     },
     shouldRebuild (a, b) {
       this.needRebuild = true

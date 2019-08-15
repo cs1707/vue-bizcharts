@@ -31,8 +31,14 @@ export default {
       type: [Boolean, String, Array],
       default: undefined // todo 看下g2源码，这个初始值是多少
     },
-    select: [Boolean, Array],
-    active: [Boolean, Array],
+    select: {
+      type: [Boolean, Array],
+      default: true
+    },
+    active: {
+      type: [Boolean, Array],
+      default: true
+    },
     animate: Object,
     hide: Boolean
   },

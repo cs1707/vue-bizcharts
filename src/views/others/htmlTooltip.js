@@ -24,6 +24,9 @@ export default {
           containerTpl='<div class="g2-tooltip"><p class="g2-tooltip-title"></p><table class="g2-tooltip-list"></table></div>'
           itemTpl='<tr class="g2-tooltip-list-item"><td style="color:{color}">{name}</td><td>{value}</td></tr>'
           offset={50}
+          crosshairs={{
+            type: 'y'
+          }}
           g2-tooltip={{
             position: 'absolute',
             visibility: 'hidden',

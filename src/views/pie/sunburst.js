@@ -60,7 +60,7 @@ export default {
                 value: percent
               }
             }]}
-            style={{ lineWidth: 1, stroke: '#fff' }}
+            styles={{ lineWidth: 1, stroke: '#fff' }}
             select={false}
           >
             <Label content='type' offset={-10} />
@@ -78,7 +78,7 @@ export default {
                   value: percent
                 }
               }]}
-              style={{ lineWidth: 1, stroke: '#fff' }}
+              styles={{ lineWidth: 1, stroke: '#fff' }}
               select={false}
             >
               <Label content='name'/>

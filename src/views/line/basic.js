@@ -18,13 +18,17 @@ const scale = {
 }
 
 export default {
+  data () {
+    return {
+      forceFit: false
+    }
+  },
   render () {
     return (
-      <Chart height={400} data={data} scale={scale} width={400} >
+      <Chart height={400} data={data} scale={scale} width={400} forceFit={this.forceFit} on-line-click={console.log}>
         <Axis name="year" />
         <Axis name="value" />
         <Tooltip crosshairs={{ type: 'y' }}/>
-        {/* <Legend /> */}
         <Geom type="line" position="year*value" size={2} />
         <Geom type='point' position="year*value" size={4} shape={'circle'} style={{ stroke: '#fff', lineWidth: 1 }} />
       </Chart>

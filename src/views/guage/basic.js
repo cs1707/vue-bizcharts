@@ -78,13 +78,13 @@ export default {
         <Axis name='1' visible={false}/>
         <Guide >
           <Arc zIndex={0} start={[ 0, 0.965 ]} end={[ 9, 0.965 ]}
-            style={{ // 底灰色
+            styles={{ // 底灰色
               stroke: '#000',
               lineWidth: 18,
               opacity: 0.09
             }}/>
           <Arc zIndex={1} start={[ 0, 0.965 ]} end={[ data[0].value, 0.965 ]}
-            style={{ // 底灰色
+            styles={{ // 底灰色
               stroke: '#1890FF',
               lineWidth: 18
             }}

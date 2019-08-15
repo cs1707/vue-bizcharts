@@ -67,7 +67,7 @@ export default {
           }}
         />
         <Geom type='intervalStack' position='percent' color={['country', [ '#67b7dc', '#84b761', '#fdd400', '#cc4748', '#cd82ad', '#2f4074', '#448e4d', '#b7b83f', '#b9783f' ]]}
-          style={{ lineWidth: 2, stroke: '#fff' }}
+          styles={{ lineWidth: 2, stroke: '#fff' }}
         >
           <Label
             content="percent"

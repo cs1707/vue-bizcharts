@@ -24,7 +24,7 @@ export default {
         <Geom
           type="interval"
           position="year*population"
-          style={{ lineWidth: 1, stroke: '#fff' }}
+          styles={{ lineWidth: 1, stroke: '#fff' }}
         >
         </Geom>
       </Chart>

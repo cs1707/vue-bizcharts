@@ -16,7 +16,6 @@ const Guide = {
     this.needRebuild = false
   },
   beforeUpdate () {
-    console.log('geom before update')
   },
 
   updated () {
@@ -47,7 +46,7 @@ const Guide = {
         return
       }
 
-      g2Instance.clear()
+      g2Instance.guide().clear()
 
       this.traverse(this.$children, vm => {
         if (vm.addElement) {
@@ -103,8 +102,10 @@ const Base = {
       if (!g2Instance) {
         return
       }
-      console.log(this.$options.type)
-      g2Instance.guide()[this.$options.type](this.$attrs)
+      g2Instance.guide()[this.$options.type]({
+        ...this.$attrs,
+        style: this.$attrs.styles
+      })
       this.guide.needRebuild = true
       this.getParent().needRepaint = true
     },
