@@ -9,7 +9,6 @@
   },
   "dependencies": {
     "@antv/g2": "^3.5.8-beta.1",
-    "lodash": "^4.17.15",
     "resize-observer-polyfill": "^1.5.1"
   },
   "peerDependencies": {

@@ -6,7 +6,7 @@ BizCharts 的 Vue 版本 （非官方）
 
 
 ## Install
-```
+``` 
 npm i vue-bizcharts -S
 ```
 

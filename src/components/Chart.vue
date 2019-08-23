@@ -8,7 +8,7 @@
 <script>
 import G2 from '@antv/g2'
 import ResizeObserver from 'resize-observer-polyfill'
-import debounce from 'lodash/debounce'
+import { debounce } from '@/utils'
 
 export default {
   name: 'BizChart',

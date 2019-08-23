@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import omit from 'lodash/omit'
+import { omit } from '@/utils'
 
 export default {
   name: 'BizCoord',
